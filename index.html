@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <!-- Bootstrap Link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="assets/css/menu.css">
+    <link rel="stylesheet" href="assets/css/index_style.css">
+
+    <!-- Firebase Link -->
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+
+    <!-- Moment.js Link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+
+    <title>Moonbucks Coffee App</title>
+
+</head>
+<body>
+    
+    <!---------------------------------------->
+    <!-- MAIN CONTENT OF PAGE -->
+    <!-- BOOTSTRAP GRID -->
+
+        <!-- Photo -->
+        <div class="row">
+            <div class="col-md-12">
+                <span class="welcomeMessage">Welcome to Moonbucks Coffee Express</span>
+                <img class="photo1" src="https://via.placeholder.com/600x400" alt="placeholder"></img>
+            </div>
+        </div>
+        
+        <br>
+        <br>
+        <br>
+        <br>
+        
+        <!-- Max width 960px container -->
+        <div class="container">         <!-- Put any bootstrap elements into class="container" to set max width to 960px-->
+                
+            <!-- Order form -->
+            <div class="row">
+                <div class="col-md-12">
+        
+                    <!-- Card outline -->
+                    <div class="card mb-4">
+                        
+                        <!-- Card header -->
+                        <div class="card-header">Create Order</div>
+
+                        <!-- Card body -->
+                        <div class="card-body">
+            
+                            <h5>First Name / Nickname (Required)</h5>
+                            <input type="text" class="form-control" id="name" placeholder="Jane" required>
+                            <br></br>
+                            
+                            <h4>Drip Coffee</h4>
+                            <p>Please select quantity to order:</p>
+                            <select class="chosen-select" id="item1">
+                                <option value=""></option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select>
+                            <br></br>
+                            <br>
+
+                            <h4>Earl Grey Tea</h4>
+                            <p>Please select quantity to order:</p>
+                            <select class="chosen-select" id="item2">
+                                <option value=""></option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select>
+                            <br></br>
+                            <br>
+
+                            <h4>Chocolate Croissant</h4>
+                            <p>Please select quantity to order:</p>
+                            <select class="chosen-select" id="item3">
+                                <option value=""></option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select>
+                            <br></br>
+                            <br>
+
+                            <button class="btn btn-primary float-left" id="add-employee-btn">Submit</button>
+            
+                        </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    
+        <br>
+        <br>
+        <br>
+        <br>
+
+    
+
+
+    <!---------------------------------------->
+    <!-- MENU -->
+
+    <!-- The Overlay -->
+    <div id="myNav" class="overlay">
+
+        <!-- Button to close the overlay navigation -->
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>      <!-- &times; is the icon for X -->
+        
+        <!-- Overlay content -->
+        <div class="overlay-content">
+            <span class="nonActiveButton">Customer Portal</span>
+            <a href="store.html">Store Portal</a>
+        </div>
+
+    </div>
+
+    <!-- Top Bar and Branding Text -->
+    <div class="topBar">
+        <span class="branding">MOONBUCKS</span>
+    </div>
+
+    <!-- Hamburger Menu -->
+    <div class="topnav">
+
+        <!-- Hamburger icon -->
+        <a href="javascript:void(0);" class="icon" onclick="openNav()">&#9776;</a>      <!-- &#9776; is the hamburger icon -->
+        
+    </div>
+
+
+
+    <!---------------------------------------->
+    <!-- JavaScript Link -->
+    <script src="assets/javascript/menu.js"></script>
+    <script src="assets/javascript/firebase.js"></script>
+
+    <!-- Bootstrap jQuery -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>

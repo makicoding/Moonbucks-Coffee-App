@@ -1,0 +1,36 @@
+/* Body */
+body {
+    background-color: white;
+}
+
+/*----------------------------------------*/
+
+.storeJumbotron {
+    background-color: black;
+    color: white;
+}
+
+/* ---------------------------------------- */
+/* ---------------------------------------- */
+/* MEDIA QUERIES */
+/* When Screen Size Max-Width is 1030px */
+/* (1024px is viewport width of iPad Pro in vertical) */
+@media screen and (max-width: 1030px) {
+
+}
+
+/* -------------------- */
+
+/* When Screen Size Max-Width is 980px */
+/* (768px is viewport width of iPad in vertical) */
+@media screen and (max-width: 980px) {
+
+}
+
+/* -------------------- */
+
+/* When Screen Size Max-Width is 750px */
+/* (375px is viewport width of iPhone X in vertical) */
+@media screen and (max-width: 750px) {
+
+}
