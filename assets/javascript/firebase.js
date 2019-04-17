@@ -1,6 +1,8 @@
 console.log("Firebase JavaScript connected!");
 
-// Initialize Firebase
+// ----------------------------------------
+// 1. INITIALIZE FIREBASE DATABASE
+
 var config = {
     apiKey: "AIzaSyBSpoLRxJj62jPSoJJjS1YwhuWH8i6WhGE",
     authDomain: "moonbucks-coffee-app.firebaseapp.com",
@@ -15,86 +17,113 @@ var config = {
 // ABOVE IS FIREBASE CONFIGURATION FOR MOONBUCKS COFFEE APP
 // RECODE FROM BELOW
 // INSERT MODAL INTO INDEX HTML AND STORE HTML
+// NEED FORM VALIDATION
 // DISPLAY TOTAL PRICE TO CUSTOMER ALSO
+
+
+// ----------------------------------------
+// 2. ADD NEW ORDER TO FIREBASE DATABASE
 
 var database = firebase.database();
 
-// 2. Button for adding Employees
-$("#add-employee-btn").on("click", function(event) {
+// Function occurs when #addNewOrderButton is clicked
+$("#addNewOrderButton").on("click", function(event) {
   event.preventDefault();
 
   // Grabs user input
-  var empName = $("#employee-name-input").val().trim();                             // .val() sets the value of #name that jQuery has gotten ($ is get)     // .trim() trims any white spaces before and after the string, but not in-between the string.
-  var empRole = $("#role-input").val().trim();
-  var empStart = moment($("#start-input").val().trim(), "MM/DD/YYYY").format("X");
-  var empRate = $("#rate-input").val().trim();
+  var newOrderName = $("#name").val().trim();                             // .val() sets the value of #name that jQuery has gotten ($ is get)     // .trim() trims any white spaces before and after the string, but not in-between the string.
+  var newOrderCoffee = $("#item1").val();
+  var newOrderTea = $("#item2").val();
+  var newOrderCroissant = $("#item3").val();
+  var newOrderTime = moment().format('LT');
 
-  // Creates local "temporary" object for holding employee data
-  var newEmp = {
-    name: empName,
-    role: empRole,
-    start: empStart,
-    rate: empRate
+  // Creates local "temporary" object called newOrder for holding the new order data
+  var newOrder = {
+    name: newOrderName,
+    coffee: newOrderCoffee,
+    tea: newOrderTea,
+    croissant: newOrderCroissant,
+    time: newOrderTime
   };
 
-  // Uploads employee data to the database
-  database.ref().push(newEmp);
+  // Uploads newOrder data to the firebase database
+  database.ref().push(newOrder);
 
   // Logs everything to console
-  console.log(newEmp.name);
-  console.log(newEmp.role);
-  console.log(newEmp.start);
-  console.log(newEmp.rate);
+  console.log(newOrder.name);
+  console.log(newOrder.coffee);
+  console.log(newOrder.tea);
+  console.log(newOrder.croissant);
+  console.log(newOrder.time);
 
-  alert("Employee successfully added");
+  // Price per item
+  var coffeePrice = 2;
+  var teaPrice = 1.5;
+  var croissantPrice = 3; 
 
-  // Clears all of the text-boxes
-  $("#employee-name-input").val("");
-  $("#role-input").val("");
-  $("#start-input").val("");
-  $("#rate-input").val("");
+  // Calculate total price
+  var totalPrice = (newOrderCoffee * coffeePrice) + (newOrderTea * teaPrice) + (newOrderCroissant * croissantPrice);
+
+  // use toFixed() to display only 2 decimal places
+  var totalPriceTwoDecimalPlaces = totalPrice.toFixed(2);       // the (2) means 2 decimal places.
+
+  $("#modalMessage").text(`Order submitted successfully! The total price is $${totalPriceTwoDecimalPlaces}`);
+  $("#confirmationModal").modal("toggle");      // this line displays the modal
+  //alert();    // Code here so that it would confirm to a modal.  Need to include total price.  Also include Cancel and Submit button.
+
+  // Clears all of the text-boxes on the customer order form on index.html
+  $("#name").val("");
+  $("#item1").val("");
+  $("#item2").val("");
+  $("#item3").val("");
 });
 
-// 3. Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
+
+
+// ----------------------------------------
+// 3. WHEN A USER SUBMITS A NEW ORDER, DISPLAY THE SUBMITTED ORDER TO STORE.HTML
+
+// Event to retrieve data from firebase database
 database.ref().on("child_added", function(childSnapshot) {
   console.log(childSnapshot.val());
 
   // Store everything into a variable.
-  var empName = childSnapshot.val().name;
-  var empRole = childSnapshot.val().role;
-  var empStart = childSnapshot.val().start;
-  var empRate = childSnapshot.val().rate;
+  var newOrderName = childSnapshot.val().name;
+  var newOrderCoffee = childSnapshot.val().coffee;
+  var newOrderTea = childSnapshot.val().tea;
+  var newOrderCroissant = childSnapshot.val().croissant;
+  var newOrderTime = childSnapshot.val().time;
 
   // Employee Info
-  console.log(empName);
-  console.log(empRole);
-  console.log(empStart);
-  console.log(empRate);
+  console.log(newOrderName);
+  console.log(newOrderCoffee);
+  console.log(newOrderTea);
+  console.log(newOrderCroissant);
+  console.log(newOrderTime);
 
   // Prettify the employee start
-  var empStartPretty = moment.unix(empStart).format("MM/DD/YYYY");
+  //var newOrderTimePretty = moment.unix(newOrderTime).format('LT');
 
   // Calculate the months worked using hardcore math
   // To calculate the months worked
-  var empMonths = moment().diff(moment(empStart, "X"), "months");
-  console.log(empMonths);
+  //var empMonths = moment().diff(moment(empStart, "X"), "months");
+  //console.log(empMonths);
 
   // Calculate the total billed rate
-  var empBilled = empMonths * empRate;
-  console.log(empBilled);
+  //var empBilled = empMonths * empRate;
+  //console.log(empBilled);
 
   // Create the new row
-  var newRow = $("<tr>").append(
-    $("<td>").text(empName),
-    $("<td>").text(empRole),
-    $("<td>").text(empStartPretty),
-    $("<td>").text(empMonths),
-    $("<td>").text(empRate),
-    $("<td>").text(empBilled)
+  var newRow = $("<tr>").prepend(
+    $("<td>").text(newOrderName),
+    $("<td>").text(newOrderCoffee),
+    $("<td>").text(newOrderTea),
+    $("<td>").text(newOrderCroissant),
+    $("<td>").text(newOrderTime)
   );
 
   // Append the new row to the table
-  $("#employee-table > tbody").append(newRow);
+  $("#customerOrderTable > tbody").prepend(newRow);
 });
 
 
@@ -106,3 +135,25 @@ database.ref().on("child_added", function(childSnapshot) {
 
 // We know that this is 15 months.
 // Now we will create code in moment.js to confirm that any attempt we use meets this test case
+
+
+
+
+
+
+
+// ----------------------------------------
+// ADDITIONAL NOTES
+
+/*
+TEMPLATE LITERALS
+
+`string ${} string` format of writing code is a template literal.
+
+Example:
+    var totalQuantity = 3 * 2;
+    console.log(`The total quantity is: ${totalQuantity}`);
+        
+    // "The total quantity is: 6" would be printed to the console.
+    
+*/
