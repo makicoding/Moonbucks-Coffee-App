@@ -27,106 +27,133 @@
 </head>
 <body>
     
-    <!---------------------------------------->
+    <!-------------------------------------------------------------------------------->
     <!-- MAIN CONTENT OF PAGE -->
     <!-- BOOTSTRAP GRID -->
 
-        <!-- Photo -->
+    <!-- Photo -->
+    <div class="row">
+        <div class="col-md-12">
+            <span class="welcomeMessage">Welcome to Moonbucks Coffee Express</span>
+            <img class="photo1" src="https://via.placeholder.com/600x400" alt="placeholder"></img>
+        </div>
+    </div>
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    <!-- Max width 960px container -->
+    <div class="container">         <!-- Put any bootstrap elements into class="container" to set max width to 960px-->
+            
+        <!-- Order form -->
         <div class="row">
             <div class="col-md-12">
-                <span class="welcomeMessage">Welcome to Moonbucks Coffee Express</span>
-                <img class="photo1" src="https://via.placeholder.com/600x400" alt="placeholder"></img>
-            </div>
-        </div>
+    
+                <!-- Card outline -->
+                <div class="card mb-4">
+                    
+                    <!-- Card header -->
+                    <div class="card-header">Create Order</div>
+
+                    <!-- Card body -->
+                    <div class="card-body">
         
-        <br>
-        <br>
-        <br>
-        <br>
-        
-        <!-- Max width 960px container -->
-        <div class="container">         <!-- Put any bootstrap elements into class="container" to set max width to 960px-->
-                
-            <!-- Order form -->
-            <div class="row">
-                <div class="col-md-12">
-        
-                    <!-- Card outline -->
-                    <div class="card mb-4">
+                        <h5>First Name / Nickname (Required)</h5>
+                        <input type="text" class="form-control" id="name" placeholder="Jane" required>
+                        <br></br>
                         
-                        <!-- Card header -->
-                        <div class="card-header">Create Order</div>
+                        <h4>Drip Coffee</h4>
+                        <h5>$2.00</h5>
+                        <p>Please select quantity to order:</p>
+                        <select class="chosen-select" id="item1">
+                            <option value=""></option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                        <br></br>
+                        <br>
 
-                        <!-- Card body -->
-                        <div class="card-body">
-            
-                            <h5>First Name / Nickname (Required)</h5>
-                            <input type="text" class="form-control" id="name" placeholder="Jane" required>
-                            <br></br>
-                            
-                            <h4>Drip Coffee</h4>
-                            <h5>$2.00</h5>
-                            <p>Please select quantity to order:</p>
-                            <select class="chosen-select" id="item1">
-                                <option value=""></option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                            </select>
-                            <br></br>
-                            <br>
+                        <h4>Earl Grey Tea</h4>
+                        <h5>$1.50</h5>
+                        <p>Please select quantity to order:</p>
+                        <select class="chosen-select" id="item2">
+                            <option value=""></option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                        <br></br>
+                        <br>
 
-                            <h4>Earl Grey Tea</h4>
-                            <h5>$1.50</h5>
-                            <p>Please select quantity to order:</p>
-                            <select class="chosen-select" id="item2">
-                                <option value=""></option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                            </select>
-                            <br></br>
-                            <br>
+                        <h4>Chocolate Croissant</h4>
+                        <h5>$3.00</h5>
+                        <p>Please select quantity to order:</p>
+                        <select class="chosen-select" id="item3">
+                            <option value=""></option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                        <br></br>
+                        <br>
 
-                            <h4>Chocolate Croissant</h4>
-                            <h5>$3.00</h5>
-                            <p>Please select quantity to order:</p>
-                            <select class="chosen-select" id="item3">
-                                <option value=""></option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                            </select>
-                            <br></br>
-                            <br>
-
-                            <button class="btn btn-primary float-left" id="addNewOrderButton">Submit</button>
-            
-                        </div>
-
-                        </div>
+                        <button class="btn btn-primary float-left" id="addNewOrderButton">Submit</button>
+        
                     </div>
 
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    
+
+
+    <!-------------------------------------------------------------------------------->
+    <!-- MODALS -->
+
+    <!-- "Validation" Modal (Use when user has not filled out their name) -->
+    <div class="modal fade" id="validationModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h2 class="modal-title"><strong>Confirm order</strong></h2>
+                </div>
+                <div class="modal-body text-center">
+                    <p id="modalMessage"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
                 </div>
             </div>
 
         </div>
+    </div>
     
-        <br>
-        <br>
-        <br>
-        <br>
     
-
 
     <!---------------------------------------->
     <!-- "Confirm Order" Modal -->
