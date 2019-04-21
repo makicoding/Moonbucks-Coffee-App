@@ -26,11 +26,15 @@ be positioned under fixed Nav Bar)
     z-index: 1;
 }
 
-.photo1 {
+.openingPhoto {
     width: 100%;
 
     position: relative;
     top: 54px;
+}
+
+.thumbnailPhoto {
+    width: 328px;
 }
 
 /* ---------------------------------------- */

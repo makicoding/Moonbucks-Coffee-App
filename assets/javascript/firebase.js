@@ -30,52 +30,83 @@ var database = firebase.database();
 $("#addNewOrderButton").on("click", function(event) {
   event.preventDefault();
 
-  // Grabs user input
-  var newOrderName = $("#name").val().trim();                             // .val() sets the value of #name that jQuery has gotten ($ is get)     // .trim() trims any white spaces before and after the string, but not in-between the string.
-  var newOrderCoffee = $("#item1").val();
-  var newOrderTea = $("#item2").val();
-  var newOrderCroissant = $("#item3").val();
-  var newOrderTime = moment().format('LT');
+  // --------------------
+  // Form validation
+  function validateForm() {
+    var isValid = true;
+    $(".form-control").each(function() {
+        if ($(this).val() === "") {
+            isValid = false;
+        }
+    });
 
-  // Creates local "temporary" object called newOrder for holding the new order data
-  var newOrder = {
-    name: newOrderName,
-    coffee: newOrderCoffee,
-    tea: newOrderTea,
-    croissant: newOrderCroissant,
-    time: newOrderTime
-  };
+    //$(".chosen-select").each(function() {   
+//
+    //    if ($(this).val() === "") {
+    //        isValid = false;
+    //    }
+    //});
+    
+    return isValid;
 
-  // Uploads newOrder data to the firebase database
-  database.ref().push(newOrder);
+  }
+  // --------------------
+  // If all required fields are filled
+  if (validateForm()) {
 
-  // Logs everything to console
-  console.log(newOrder.name);
-  console.log(newOrder.coffee);
-  console.log(newOrder.tea);
-  console.log(newOrder.croissant);
-  console.log(newOrder.time);
+    // Grabs user input
+    var newOrderName = $("#name").val().trim();                             // .val() sets the value of #name that jQuery has gotten ($ is get)     // .trim() trims any white spaces before and after the string, but not in-between the string.
+    var newOrderCoffee = $("#item1").val();
+    var newOrderTea = $("#item2").val();
+    var newOrderCroissant = $("#item3").val();
+    var newOrderTime = moment().format('LT');
 
-  // Price per item
-  var coffeePrice = 2;
-  var teaPrice = 1.5;
-  var croissantPrice = 3; 
+    // Creates local "temporary" object called newOrder for holding the new order data
+    var newOrder = {
+      name: newOrderName,
+      coffee: newOrderCoffee,
+      tea: newOrderTea,
+      croissant: newOrderCroissant,
+      time: newOrderTime
+    };
 
-  // Calculate total price
-  var totalPrice = (newOrderCoffee * coffeePrice) + (newOrderTea * teaPrice) + (newOrderCroissant * croissantPrice);
+    // Uploads newOrder data to the firebase database
+    database.ref().push(newOrder);
 
-  // use toFixed() to display only 2 decimal places
-  var totalPriceTwoDecimalPlaces = totalPrice.toFixed(2);       // the (2) means 2 decimal places.
+    // Logs everything to console
+    console.log(newOrder.name);
+    console.log(newOrder.coffee);
+    console.log(newOrder.tea);
+    console.log(newOrder.croissant);
+    console.log(newOrder.time);
 
-  $("#modalMessage").text(`Order submitted successfully! The total price is $${totalPriceTwoDecimalPlaces}`);
-  $("#confirmationModal").modal("toggle");      // this line displays the modal
-  //alert();    // Code here so that it would confirm to a modal.  Need to include total price.  Also include Cancel and Submit button.
+    // Price per item
+    var coffeePrice = 2;
+    var teaPrice = 1.5;
+    var croissantPrice = 3; 
 
-  // Clears all of the text-boxes on the customer order form on index.html
-  $("#name").val("");
-  $("#item1").val("");
-  $("#item2").val("");
-  $("#item3").val("");
+    // Calculate total price
+    var totalPrice = (newOrderCoffee * coffeePrice) + (newOrderTea * teaPrice) + (newOrderCroissant * croissantPrice);
+
+    // use toFixed() to display only 2 decimal places
+    var totalPriceTwoDecimalPlaces = totalPrice.toFixed(2);       // the (2) means 2 decimal places.
+
+    $("#modalMessage").text(`Order submitted successfully! The total price is $${totalPriceTwoDecimalPlaces}`);
+    $("#confirmationModal").modal("toggle");      // this line displays the modal
+    //alert();    // Code here so that it would confirm to a modal.  Need to include total price.  Also include Cancel and Submit button.
+
+    // Clears all of the text-boxes on the customer order form on index.html
+    $("#name").val("");
+    $("#item1").val("");
+    $("#item2").val("");
+    $("#item3").val("");
+  
+  }
+
+  else {
+    alert("Please fill out name before submitting!");
+  }
+
 });
 
 
