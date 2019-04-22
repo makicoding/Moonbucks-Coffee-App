@@ -1,0 +1,15 @@
+body, html {        /* This part is important to have in order to get the destination id to scroll to the top of the page */
+    width: 100%;
+    height: 100%;
+}
+
+.smoothScrollButton1 {
+    background-color: red;
+
+    position: absolute;
+    top: 33%;
+    left: 50%;
+    transform: translate(-88.585px, 0px);
+    
+    z-index: 1;
+}
