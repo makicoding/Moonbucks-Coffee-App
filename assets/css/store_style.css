@@ -5,6 +5,11 @@ body {
 
 /*----------------------------------------*/
 
+.storePageContainer {
+    position: relative;
+    top: 85px;
+}
+
 .storeJumbotron {
     background-color: black;
     color: white;
