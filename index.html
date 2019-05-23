@@ -202,72 +202,71 @@
     <!-------------------------------------------------------------------------------->
     <!-- MODALS -->
 
-    <!-- "Validation" Modal (Use when user has not filled out their name) -->
-    <div class="modal fade" id="validationModal" role="dialog">
+    <!-- Modal 1 (Please fill all required fields) -->
+    <div id="pleaseFillAllFieldsModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
-
+  
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h2 class="modal-title"><strong>Confirm order</strong></h2>
+                    <h2 class="modal-title modal1Title"><strong>Attention!</strong></h2>
                 </div>
                 <div class="modal-body text-center">
-                    <p id="modalMessage"></p>
+                    <p>Please fill out name and a quantity for at least one item before submitting!</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
+                    <button type="button" class="closeButton modalFooterButton" data-dismiss="modal">Close</button>
                 </div>
             </div>
-
-        </div>
-    </div>
-    
-    
-
-    <!---------------------------------------->
-    <!-- "Confirm Order" Modal -->
-    <div class="modal fade" id="confirmationModal" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h2 class="modal-title"><strong>Confirm order</strong></h2>
-                </div>
-                <div class="modal-body text-center">
-                    <p id="modalMessage"></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
-                </div>
-            </div>
-
+  
         </div>
     </div>
 
+    <!-------------------->
+    <!-- Modal 2 (Confirm) -->
+    <div id="confirmModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
 
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title"><strong>Confirm</strong></h2>
+            </div>
+            <div class="modal-body text-center">
+                <p>Hi 
+                <span id="modalConfirmOrderName"></span>, 
+                your order total will be $
+                <span id="modalConfirmOrderTotal"></span>. 
+                Are you sure you would like to submit your order?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="modalFooterButton" data-dismiss="modal">Cancel</button>
+                <button type="button" class="confirmButton modalFooterButton">Confirm</button>
+            </div>
+        </div>
 
-    <!---------------------------------------->
-    <!-- "Submitted Successfully" Modal -->
-    <div class="modal fade" id="submittedSuccessfullyModal" role="dialog">
+    </div>
+    </div>
+
+    <!-------------------->
+    <!-- Modal 3 (Success!) -->
+    <div id="successModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h2 class="modal-title"><strong>Confirm order</strong></h2>
+                    <h2 class="modal-title"><strong>Success!</strong></h2>
                 </div>
                 <div class="modal-body text-center">
-                    <p id="modalMessage"></p>
+                    <p>Thank you 
+                    <span id="modalSuccessOrderName"></span>, 
+                    your order has been submitted successfully!
+                    </p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
+                <button type="button" class="successModalCloseButton modalFooterButton">Close</button>
                 </div>
             </div>
 
