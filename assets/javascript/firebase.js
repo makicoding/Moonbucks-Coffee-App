@@ -33,23 +33,24 @@ var teaPrice = 3;
 var croissantPrice = 3;
 
 // Convert the quantity of the items from strings to numbers
-var coffeeQuantityNumber = parseInt(newOrderCoffee.val());          // parseInt converts a string into an integer. To convert a string into a decimal number, use parseFloat
-var teaQuantityNumber = parseInt(newOrderTea.val());
-var croissantQuantityNumber = parseInt(newOrderCroissant.val());
+// var coffeeQuantityNumber = parseInt(newOrderCoffee.val());          // parseInt converts a string into an integer. To convert a string into a decimal number, use parseFloat
+// var teaQuantityNumber = parseInt(newOrderTea.val());
+// var croissantQuantityNumber = parseInt(newOrderCroissant.val());
 
 // Calculate total price
-var totalPrice = (coffeeQuantityNumber * coffeePrice) + (teaQuantityNumber * teaPrice) + (croissantQuantityNumber * croissantPrice);  
+// var totalPrice = (coffeeQuantityNumber * coffeePrice) + (teaQuantityNumber * teaPrice) + (croissantQuantityNumber * croissantPrice);  
 
-// use toFixed() to display only 2 decimal places
-var totalPriceTwoDecimalPlaces = totalPrice.toFixed(2);       // the (2) means 2 decimal places.
+
+
 
 
 
 // Function occurs when #addNewOrderButton is clicked
 $("#addNewOrderButton").on("click", function(event) {
+
   event.preventDefault();
 
-  console.log(totalPriceTwoDecimalPlaces);
+  // console.log(totalPriceTwoDecimalPlaces);
 
   // --------------------
   // Form validation
@@ -69,14 +70,22 @@ $("#addNewOrderButton").on("click", function(event) {
 
   // If all required fields are filled
 
+  // Calculate total price
+  var totalPrice = (parseInt(newOrderCoffee.val()) * coffeePrice) + (parseInt(newOrderTea.val()) * teaPrice) + (parseInt(newOrderCroissant.val()) * croissantPrice); 
+
+  // use toFixed() to display only 2 decimal places
+  var totalPriceTwoDecimalPlaces = totalPrice.toFixed(2);       // the (2) means 2 decimal places.
+
   // Show Modal 2 confirming the user's order before submitting
   $("#confirmModal").modal("toggle");
 
   // Populate Modal 2 with order data
   $("#modalConfirmOrderName").html(newOrderName.val());
   console.log(totalPrice);
-  console.log(totalPriceTwoDecimalPlaces);
-  $("#modalConfirmOrderTotal").html(totalPriceTwoDecimalPlaces);
+  // console.log(totalPriceTwoDecimalPlaces);
+  // $("#modalConfirmOrderTotal").html(totalPriceTwoDecimalPlaces);
+  // $("#modalConfirmOrderTotal").html((newOrderCoffee.val() * 2) + (newOrderTea.val() * 3) + (newOrderCroissant.val() * 3));
+  $("#modalConfirmOrderTotal").text(totalPriceTwoDecimalPlaces);
 
 });
 
@@ -131,19 +140,32 @@ database.ref().on("child_added", function(childSnapshot) {
   console.log(childSnapshot.val());
 
   // Store everything into a variable.
-  var newOrderName = childSnapshot.val().name;
-  var newOrderCoffee = childSnapshot.val().coffee;
-  var newOrderTea = childSnapshot.val().tea;
-  var newOrderCroissant = childSnapshot.val().croissant;
-  var newOrderTime = childSnapshot.val().time;
+  var newOrderNameRetrieved = childSnapshot.val().name;
+  var newOrderCoffeeRetrieved = childSnapshot.val().coffee;
+  var newOrderTeaRetrieved = childSnapshot.val().tea;
+  var newOrderCroissantRetrieved = childSnapshot.val().croissant;
+  var newOrderTimeRetrieved = childSnapshot.val().time;
 
   // Create the new row
   var newRow = $("<tr>").prepend(
-    $("<td>").text(newOrderName),
-    $("<td>").text(newOrderCoffee),
-    $("<td>").text(newOrderTea),
-    $("<td>").text(newOrderCroissant),
-    $("<td>").text(newOrderTime)
+    $("<td>").text(newOrderNameRetrieved),
+    $("<td>").text(newOrderCoffeeRetrieved !== "0" ? newOrderCoffeeRetrieved : ""),   // Ternary Operator.  This is like an if/else statement where the ? is the equivalent of if, and : is the equivalent of else
+                                                                                      // In this case we are saying if newOrderCoffeeRetrieved is not zero, then newOrderCoffeeRetrieved. Else "" (an empty string)
+    /*
+    // The following is the long hand version of the Ternary Operator:
+
+    var coffeeOrder = "";
+    if (newOrderCoffeeRetrieved !== "0") {
+      coffeeOrder = newOrderCoffeeRetrieved;
+    }
+    else {
+      coffeeOrder = "";
+    }
+    $("<td>").text(coffeeOrder)
+    */
+    $("<td>").text(newOrderTeaRetrieved !== "0" ? newOrderTeaRetrieved : ""),   
+    $("<td>").text(newOrderCroissantRetrieved !== "0" ? newOrderCroissantRetrieved : ""),
+    $("<td>").text(newOrderTimeRetrieved)
   );
 
   // Append the new row to the table
