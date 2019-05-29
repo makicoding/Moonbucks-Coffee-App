@@ -33,13 +33,12 @@ var teaPrice = 3;
 var croissantPrice = 3;
 
 // Convert the quantity of the items from strings to numbers
-var numberNewOrderCoffee = parseInt(newOrderCoffee.val())       // parseInt converts a string into an integer. To convert a string into a decimal number, use parseFloat
-var numberNewOrderTea = parseInt(newOrderTea.val())
-var numberNewOrderCroissant = parseInt(newOrderCroissant.val())
+var coffeeQuantityNumber = parseInt(newOrderCoffee.val());          // parseInt converts a string into an integer. To convert a string into a decimal number, use parseFloat
+var teaQuantityNumber = parseInt(newOrderTea.val());
+var croissantQuantityNumber = parseInt(newOrderCroissant.val());
 
 // Calculate total price
-var totalPrice = (numberNewOrderCoffee * coffeePrice) + (numberNewOrderTea * teaPrice) + (numberNewOrderCroissant * croissantPrice);  
-// var totalPrice = newOrderCoffee.val() * coffeePrice;
+var totalPrice = (coffeeQuantityNumber * coffeePrice) + (teaQuantityNumber * teaPrice) + (croissantQuantityNumber * croissantPrice);  
 
 // use toFixed() to display only 2 decimal places
 var totalPriceTwoDecimalPlaces = totalPrice.toFixed(2);       // the (2) means 2 decimal places.
@@ -54,28 +53,9 @@ $("#addNewOrderButton").on("click", function(event) {
 
   // --------------------
   // Form validation
-
-  // function validateForm() {
-  //   var isValid = true;
-
-    // // Get name from .form-control and if the value is empty, return false for isValid
-    // $(".form-control").each(function() {
-    //     if ($(this).val() === "") {
-    //       isValid = false;
-    //     }
-    // });
-
-    //$(".chosen-select").each(function() {   
-    //
-    //    if ($(this).val() === "") {
-    //        isValid = false;
-    //    }
-    //});
-    
+  
   // If the value for #name or (item1 and #item2 and item3) are empty, return false for isValid
   if ( (!newOrderName.val().trim()) || (!newOrderCoffee.val() && !newOrderTea.val() && !newOrderCroissant.val()) ) {
-  // if (($("#name").val().trim() === "") || (($("#item1").val() === "") && ($("#item2").val() === "") && ($("#item3").val() === ""))) {
-    // isValid = false;
 
     console.log("Please fill out name and quantity for at least one item before submitting!");
 
@@ -85,23 +65,21 @@ $("#addNewOrderButton").on("click", function(event) {
     return;
   }
 
-    // return isValid;
-  // };
-
   // --------------------
 
   // If all required fields are filled
-  // if (validateForm()) {
 
   // Show Modal 2 confirming the user's order before submitting
   $("#confirmModal").modal("toggle");
 
   // Populate Modal 2 with order data
   $("#modalConfirmOrderName").html(newOrderName.val());
+  console.log(totalPrice);
   console.log(totalPriceTwoDecimalPlaces);
   $("#modalConfirmOrderTotal").html(totalPriceTwoDecimalPlaces);
 
 });
+
 
 
 // When the confirmButton on Modal 2 is clicked
@@ -120,23 +98,6 @@ $(".confirmButton").click(function () {
     database.ref().push(newOrder);
     console.log("New order submitted!");
     orderSuccessModal();
-    
-    // Logs everything to console
-    // console.log(newOrder.name);
-    // console.log(newOrder.coffee);
-    // console.log(newOrder.tea);
-    // console.log(newOrder.croissant);
-    // console.log(newOrder.time);
-
-    // $("#modalMessage").text(`Order submitted successfully! The total price is $${totalPriceTwoDecimalPlaces}`);
-    // $("#confirmationModal").modal("toggle");      // this line displays the modal
-    //alert();    // Code here so that it would confirm to a modal.  Need to include total price.  Also include Cancel and Submit button.
-  
-  // }
-
-  // else {
-  //   alert("Please fill out name and quantity for at least one item before submitting!");
-  // }
 
 });
 
@@ -175,25 +136,6 @@ database.ref().on("child_added", function(childSnapshot) {
   var newOrderTea = childSnapshot.val().tea;
   var newOrderCroissant = childSnapshot.val().croissant;
   var newOrderTime = childSnapshot.val().time;
-
-  // Employee Info
-  console.log(newOrderName);
-  console.log(newOrderCoffee);
-  console.log(newOrderTea);
-  console.log(newOrderCroissant);
-  console.log(newOrderTime);
-
-  // Prettify the employee start
-  //var newOrderTimePretty = moment.unix(newOrderTime).format('LT');
-
-  // Calculate the months worked using hardcore math
-  // To calculate the months worked
-  //var empMonths = moment().diff(moment(empStart, "X"), "months");
-  //console.log(empMonths);
-
-  // Calculate the total billed rate
-  //var empBilled = empMonths * empRate;
-  //console.log(empBilled);
 
   // Create the new row
   var newRow = $("<tr>").prepend(
