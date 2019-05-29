@@ -71,6 +71,7 @@ $("#addNewOrderButton").on("click", function(event) {
   // If all required fields are filled
 
   // Calculate total price
+  // parseInt converts a string into an integer. To convert a string into a decimal number, use parseFloat
   var totalPrice = (parseInt(newOrderCoffee.val()) * coffeePrice) + (parseInt(newOrderTea.val()) * teaPrice) + (parseInt(newOrderCroissant.val()) * croissantPrice); 
 
   // use toFixed() to display only 2 decimal places
