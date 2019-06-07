@@ -46,7 +46,7 @@ var croissantPrice = 3;
 
 
 // Function occurs when #addNewOrderButton is clicked
-$("#addNewOrderButton").on("click", function(event) {
+$(".addNewOrderButton").on("click", function(event) {
 
   event.preventDefault();
 

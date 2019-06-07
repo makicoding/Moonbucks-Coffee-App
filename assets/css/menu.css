@@ -4,7 +4,9 @@
 .topBar {
     width: 100%;
     height: 54px;
-    background-color: #25ce55;
+    /* background-color: #25ce55; */
+    background-color: #1fc7ec;
+    /* background-color: #31d2f7; */
     
     position: fixed;
     top: 0;
@@ -82,7 +84,8 @@
     text-decoration: none;
     font-family: 'Lato', sans-serif;
     font-size: 36px;
-    color: #818181;
+    /* color: #818181; */
+    color: #1fc7ec;
     display: block; /* Display block instead of inline */
     transition: 0.3s; /* Transition effects on hover (color) */
 }
@@ -106,7 +109,8 @@
     text-decoration: none;
     font-family: 'Lato', sans-serif;
     font-size: 36px;
-    color: #818181;
+    /* color: #818181; */
+    color: #1fc7ec;
     cursor: pointer;
 }
 

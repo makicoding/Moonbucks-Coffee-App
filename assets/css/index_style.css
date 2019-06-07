@@ -19,13 +19,14 @@ be positioned under fixed Nav Bar)
 
 .welcomeMessage {
     width: 100%;
+    padding: 5px 0px 5px 0px;
 
-    background-color: red;
+    background-color: white;
     font-size: 40px;
     text-align: center;
 
     position: absolute;
-    top: 25%;
+    top: 35%;
 
     z-index: 1;
 }
@@ -42,6 +43,36 @@ be positioned under fixed Nav Bar)
     width: 100%;
 }
 
+.addNewOrderButton {
+    width: 100%;
+
+    padding: 10px 20px 10px 20px;
+    border: none;
+    border-radius: 5px;
+    
+    /* background-color: #1fc7ec; */
+    background-color: #ecbc1f;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: none;
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+  
+    cursor: pointer;
+}
+
+.addNewOrderButton:hover {
+    /* background-color: #1cbadd; */
+    /* background-color: #ecbc1f; */
+    background-color: #1fc7ec;
+    text-decoration: none;
+}
+
+.addNewOrderButton:focus {
+    outline: 0;         /* This gets rid of the blue outline around the button when the button is clicked */
+}
+
 /* ---------------------------------------- */
 /* ---------------------------------------- */
 /* MEDIA QUERIES */
@@ -52,7 +83,7 @@ be positioned under fixed Nav Bar)
 
     .welcomeMessage {        
         position: absolute;
-        top: 40%;
+        top: 44%;
     }
      
     .openingPhoto {      
@@ -82,10 +113,10 @@ be positioned under fixed Nav Bar)
 @media screen and (max-width: 750px) {
     
     .welcomeMessage {  
-        font-size: 20px;
+        font-size: 17px;
         
         position: absolute;
-        top: 35%;
+        top: 42%;
     }
 
 }
