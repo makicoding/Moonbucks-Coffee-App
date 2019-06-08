@@ -55,11 +55,43 @@ $(".addNewOrderButton").on("click", function(event) {
   // --------------------
   // Form validation
   
-  // If the value for #name or (item1 and #item2 and item3) are empty, return false for isValid
-  if ( (!newOrderName.val().trim()) || (!newOrderCoffee.val() && !newOrderTea.val() && !newOrderCroissant.val()) ) {
 
-    console.log("Please fill out name and quantity for at least one item before submitting!");
 
+  // If the value for #name or (item1 and #item2 and item3) are empty, toggle the #pleaseFillAllFieldsModal
+  // if ( (!newOrderName.val().trim()) || (!newOrderCoffee.val() && !newOrderTea.val() && !newOrderCroissant.val()) ) {
+
+  //   console.log("Please fill out name and quantity for at least one item before submitting!");
+
+  //   // Show the modal with alerting the user to fill out all fields
+  //   $("#pleaseFillAllFieldsModal").modal("toggle");
+
+  //   return;
+  // }
+
+
+
+  // typeof shows whether the value (.val()) is a string or a number  
+  // Here we are trying to figure out if the value of newOrderCoffee is a string or a number
+  console.log(typeof newOrderCoffee.val(), newOrderTea.val(), newOrderCroissant.val(), newOrderCoffee.val() || newOrderTea.val() || newOrderCroissant.val())
+  
+  // If the there is NO value for newOrderName, then toggle the #pleaseFillAllFieldsModal
+  if (!newOrderName.val().trim()) {
+
+    console.log("Please fill out name!");
+    console.log('here')
+    // Show the modal with alerting the user to fill out all fields
+    $("#pleaseFillAllFieldsModal").modal("toggle");
+
+    return;
+  }
+
+  // If there IS a value for newOrderName...
+  // BUT the value for newOrderCoffee is equal to a string "0" AND newOrderTea is equal to a string "0" AND newOrderCroissant is equal to string "0"...
+  // then toggle the #pleaseFillAllFieldsModal
+  else if ((newOrderCoffee.val() === "0") && (newOrderTea.val() === "0") && (newOrderCroissant.val() === "0")) {
+
+    console.log("You gave me a name. Please specify product quantity!");
+    console.log('there')
     // Show the modal with alerting the user to fill out all fields
     $("#pleaseFillAllFieldsModal").modal("toggle");
 
