@@ -2,11 +2,12 @@
 
 /* Top Bar */
 .topBar {
+    /* display: none;  topBar is set to be hidden.  To make topBar visible, set display: block */
+    display: block;
+
     width: 100%;
     height: 54px;
-    /* background-color: #25ce55; */
     background-color: #1fc7ec;
-    /* background-color: #31d2f7; */
     
     position: fixed;
     top: 0;
@@ -15,17 +16,18 @@
 
 /* Branding */
 .branding {
+    /* display: none;  branding is set to be hidden.  To make branding visible, set display: block */
+    display: block;
 
     color: white;
     /* font-family: 'Lato', sans-serif; */
     font-family: 'Shrikhand', cursive;
     /* font-family: 'Sonsie One', cursive; */
-    
     font-size: 34px;
 
     position: relative;
-    top: 5px;
-    left: 10px;
+    top: 6px;
+    left: 12px;
 }
 
 /* ---------------------------------------- */
@@ -44,13 +46,14 @@
 .topnav a.icon {
     background: black;
     position: fixed;
-    right: 0;
-    top: 0;
+    right: 0px;
+    top: 0px;
 }
 
-/* Add a grey background color on mouse-over */
+/* Add a background color on mouse-over */
 .topnav a:hover {
-    background-color: #ddd;
+    /* background-color: #ddd; */
+    background-color: #ecbc1f;
     color: black;
 }
 
@@ -66,8 +69,8 @@
     z-index: 1; /* Sit on top */
     top: 0;
     left: 0;
-    background-color: rgb(0,0,0); /* Black fallback color */
-    background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
+    background-color: black;
+    opacity: 0.9;
     overflow-x: hidden; /* Disable horizontal scroll */
     transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
 }
@@ -75,60 +78,71 @@
 /* Position the content inside the overlay */
 .overlay-content {
     position: relative;
-    top: 38%; /* 38% from the top */
+    top: 38%; /* Percentage from the top */
+    left: -1px; /*  offset a little here because the font is italic and there is an optical illusion
+                    happening with the text seeming to appear slightly to the right */
     width: 100%; /* 100% width */
     text-align: center; /* Centered text/links */
     margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
 }
-  
+
+/* -------------------- */
 /* The navigation links inside the overlay */
 .overlay a {
-    padding: 8px;
     text-decoration: none;
     /* font-family: 'Lato', sans-serif; */
     font-family: 'Shrikhand', cursive;
-    font-size: 36px;
-    /* color: #818181; */
-    color: #1fc7ec;
+    /* font-family: 'Sonsie One', cursive; */
+    font-size: 45px;
+    color:#1fc7ec;
     display: block; /* Display block instead of inline */
-    transition: 0.3s; /* Transition effects on hover (color) */
+    cursor: pointer;
+    transition: 0.3s; /* Transition effects on hover (color) */  
 }
   
 /* When you mouse over the navigation links, change their color */
 .overlay a:hover, .overlay a:focus {
-    color: #f1f1f1;
+    color: white;
+    font-size: 55px;
 }
-  
+
+/* -------------------- */
 /* Position the close button (top right corner) */
 .overlay .closebtn {
-    font-family: 'Lato', sans-serif;
     position: absolute;
-    top: 20px;
+    top: 0px;
     right: 45px;
-    font-size: 80px;
+    font-family: 'Lato', sans-serif;
+    font-size: 100px;
+    cursor: pointer;
+    transition: 0.3s; /* Transition effects on hover (color) */
 }
 
+/* close button hover */
+.overlay .closebtn:hover {
+    top: -26px;
+    right: 35px;
+    font-size: 140px;
+}
+
+/* -------------------- */
 /* Non-Active button */
 .nonActiveButton {
-    padding: 8px;
     text-decoration: none;
     /* font-family: 'Lato', sans-serif; */
     font-family: 'Shrikhand', cursive;
-    font-size: 36px;
-    /* color: #818181; */
+    /* font-family: 'Sonsie One', cursive; */
+    font-size: 45px;
     color: #1fc7ec;
+    display: block; /* Display block instead of inline */
     cursor: pointer;
+    transition: 0.3s; /* Transition effects on hover (color) */
 }
 
-/* Non-Active button hover*/
+/* Non-Active button hover */
 .nonActiveButton:hover {
-    padding: 8px;
-    text-decoration: none;
-    /* font-family: 'Lato', sans-serif; */
-    font-family: 'Shrikhand', cursive;
-    font-size: 36px;
-    color: #f1f1f1;
-    cursor: pointer;
+    font-size: 55px;
+    color: white;
 }
 
 /* ---------------------------------------- */
@@ -146,14 +160,12 @@
     }
 }
 
-/* -------------------- */
+/* ---------------------------------------- */
 
 /* When Screen Size Max-Width is 1030px */
 /* (1024px is viewport width of iPad Pro in vertical) */
 /* (1366px is viewport height of iPad Pro in vertical) */
 @media screen and (max-width: 1030px) {
-
-
 
 }
 
@@ -164,7 +176,9 @@
 /* (1024px is viewport height of iPad in vertical) */
 @media screen and (max-width: 980px) {
 
-
+    .overlay-content {
+        top: 24%;
+    }
 
 }
 
@@ -174,11 +188,8 @@
 /* (375px is viewport width of iPhone X in vertical) */
 @media screen and (max-width: 750px) {
 
-    .overlay .closebtn {
-        font-size: 70px;
-
-        left: 50%;
-        transform: translate(-30px, 0px);
+    .overlay-content {
+        top: 30%;
     }
 
     .overlay a {
@@ -187,10 +198,35 @@
         transform: translate(-5px, 0px);
     }
 
+    .overlay a:hover, .overlay a:focus {
+        font-size: 30px;
+    }
+
+    .overlay .closebtn {
+        position: absolute;
+        top: 12px;
+        left: 50%;
+        transform: translate(-30px, 0px);
+        font-size: 70px;
+    }
+
+    .overlay .closebtn:hover {
+        position: absolute;
+        top: 12px;
+        right: 30px;
+        font-size: 70px;
+    }
+
+    /* Non-Active button */
     .nonActiveButton {
         font-size: 35px;
 
         transform: translate(-5px, 0px);
+    }
+
+    /* Non-Active button hover*/
+    .nonActiveButton:hover {
+        font-size: 35px;
     }
 
 }
