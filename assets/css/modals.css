@@ -1,0 +1,50 @@
+.modal-title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+}
+
+.modal1Title {
+    color: #e73a46;     /* Same color as bootstrap btn btn-danger */
+}
+
+.modal-body {
+    margin: 16px 0px 0px 0px;
+
+    background-color: none;     /* Change color to show position of modal-body */
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+.modalFooterButton {
+    width: 100px;
+    height: 40px;
+  
+    padding: 0px 1px 0px 0px;   /* Offset button text position to compensate for the italic font and the optical illusion it creates */
+    border: none;
+    border-radius: 5px;
+
+    background-color: #ecbc1f;
+    /* color: black; */
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    /* font-style: italic; */
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+  
+    cursor: pointer;
+  
+    float: right;
+}
+  
+.modalFooterButton:hover {
+    /* background-color: black; */
+    background-color: #1fc7ec;
+    /* background-color: #ecbc1f; */
+    color: white;
+}
+  
+.modalFooterButton:focus {
+    outline: 0;         /* This gets rid of the blue outline around the button when the button is clicked */
+}

@@ -54,7 +54,8 @@
 .topnav a:hover {
     /* background-color: #ddd; */
     background-color: #ecbc1f;
-    color: black;
+    /* color: black; */
+    color: white;
 }
 
 /* ---------------------------------------- */
