@@ -26,8 +26,8 @@
     font-size: 34px;
 
     position: relative;
-    top: 6px;
-    left: 12px;
+    top: 5px;
+    left: 10px;
 }
 
 /* ---------------------------------------- */
@@ -206,7 +206,7 @@
         position: absolute;
         top: 12px;
         left: 50%;
-        transform: translate(-25px, 0px);
+        transform: translate(-24px, 0px);
         font-size: 70px;
     }
 
