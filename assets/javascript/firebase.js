@@ -70,7 +70,7 @@ $(".addNewOrderButton").on("click", function(event) {
 
 
 
-  // typeof shows whether the value (.val()) is a string or a number  
+  // typeof shows whether the value ( .val() ) is a string or a number  
   // Here we are trying to figure out if the value of newOrderCoffee is a string or a number
   console.log(typeof newOrderCoffee.val(), newOrderTea.val(), newOrderCroissant.val(), newOrderCoffee.val() || newOrderTea.val() || newOrderCroissant.val())
   
