@@ -30,6 +30,11 @@
     left: 10px;
 }
 
+.branding:hover {
+    color: white;
+    text-decoration: none;
+}
+
 /* ---------------------------------------- */
 /* HAMBURGER MENU ICON */
 
