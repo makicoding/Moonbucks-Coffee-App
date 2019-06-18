@@ -117,7 +117,7 @@ function orderSuccessModal() {
   $("#modalSuccessOrderName").html(newOrderName.val().trim());
 
   $(".successModalCloseButton").click(function () {
-    window.location.href = "/index.html";
+    window.location.href = "index.html";
 
     // Clears all of the text-boxes on the customer order form on index.html
     // newOrderName.val("");
