@@ -14,7 +14,6 @@ var config = {
   firebase.initializeApp(config);
 
 
-
 // ----------------------------------------
 // 2. ADD NEW ORDER TO FIREBASE DATABASE
 
@@ -32,44 +31,15 @@ var coffeePrice = 2;
 var teaPrice = 3;
 var croissantPrice = 3;
 
-// Convert the quantity of the items from strings to numbers
-// var coffeeQuantityNumber = parseInt(newOrderCoffee.val());          // parseInt converts a string into an integer. To convert a string into a decimal number, use parseFloat
-// var teaQuantityNumber = parseInt(newOrderTea.val());
-// var croissantQuantityNumber = parseInt(newOrderCroissant.val());
-
-// Calculate total price
-// var totalPrice = (coffeeQuantityNumber * coffeePrice) + (teaQuantityNumber * teaPrice) + (croissantQuantityNumber * croissantPrice);  
-
-
-
-
-
 
 // Function occurs when #addNewOrderButton is clicked
 $(".addNewOrderButton").on("click", function(event) {
 
   event.preventDefault();
 
-  // console.log(totalPriceTwoDecimalPlaces);
-
   // --------------------
   // Form validation
   
-
-
-  // If the value for #name or (item1 and #item2 and item3) are empty, toggle the #pleaseFillAllFieldsModal
-  // if ( (!newOrderName.val().trim()) || (!newOrderCoffee.val() && !newOrderTea.val() && !newOrderCroissant.val()) ) {
-
-  //   console.log("Please fill out name and quantity for at least one item before submitting!");
-
-  //   // Show the modal with alerting the user to fill out all fields
-  //   $("#pleaseFillAllFieldsModal").modal("toggle");
-
-  //   return;
-  // }
-
-
-
   // typeof shows whether the value ( .val() ) is a string or a number  
   // Here we are trying to figure out if the value of newOrderCoffee is a string or a number
   console.log(typeof newOrderCoffee.val(), newOrderTea.val(), newOrderCroissant.val(), newOrderCoffee.val() || newOrderTea.val() || newOrderCroissant.val())
@@ -114,14 +84,9 @@ $(".addNewOrderButton").on("click", function(event) {
 
   // Populate Modal 2 with order data
   $("#modalConfirmOrderName").html(newOrderName.val());
-  console.log(totalPrice);
-  // console.log(totalPriceTwoDecimalPlaces);
-  // $("#modalConfirmOrderTotal").html(totalPriceTwoDecimalPlaces);
-  // $("#modalConfirmOrderTotal").html((newOrderCoffee.val() * 2) + (newOrderTea.val() * 3) + (newOrderCroissant.val() * 3));
   $("#modalConfirmOrderTotal").text(totalPriceTwoDecimalPlaces);
 
 });
-
 
 
 // When the confirmButton on Modal 2 is clicked
@@ -164,7 +129,6 @@ function orderSuccessModal() {
 };
 
 
-
 // ----------------------------------------
 // 3. WHEN A USER SUBMITS A NEW ORDER, DISPLAY THE SUBMITTED ORDER TO STORE.HTML
 
@@ -196,6 +160,7 @@ database.ref().on("child_added", function(childSnapshot) {
     }
     $("<td>").text(coffeeOrder)
     */
+   
     $("<td>").text(newOrderTeaRetrieved !== "0" ? newOrderTeaRetrieved : ""),   
     $("<td>").text(newOrderCroissantRetrieved !== "0" ? newOrderCroissantRetrieved : ""),
     $("<td>").text(newOrderTimeRetrieved)
