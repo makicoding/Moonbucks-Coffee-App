@@ -1,0 +1,204 @@
+/* TOP BAR AND BRANDING TEXT */
+
+/* Top Bar */
+.topBar {
+    width: 100%;
+    height: 54px;
+    /* background-color: #25ce55; */
+    background-color: #1fc7ec;
+    /* background-color: #31d2f7; */
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+/* Branding */
+.branding {
+
+    color: white;
+    /* font-family: 'Lato', sans-serif; */
+    font-family: 'Shrikhand', cursive;
+    /* font-family: 'Sonsie One', cursive; */
+    
+    font-size: 34px;
+
+    position: relative;
+    top: 5px;
+    left: 10px;
+}
+
+/* ---------------------------------------- */
+/* HAMBURGER MENU ICON */
+
+/* Style navigation menu links */
+.topnav a {
+    color: white;
+    padding: 15px 16px;
+    text-decoration: none;
+    font-size: 16px;
+    display: block;
+}
+
+/* Style the hamburger menu */
+.topnav a.icon {
+    background: black;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
+/* Add a grey background color on mouse-over */
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* ---------------------------------------- */
+/* OVERLAY MENU */
+
+/* The Overlay (background) */
+.overlay {
+    /* Height & width depends on how you want to reveal the overlay (see JS file) */    
+    height: 0%;
+    width: 100%;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0); /* Black fallback color */
+    background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+  
+/* Position the content inside the overlay */
+.overlay-content {
+    position: relative;
+    top: 38%; /* 38% from the top */
+    width: 100%; /* 100% width */
+    text-align: center; /* Centered text/links */
+    margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+}
+  
+/* The navigation links inside the overlay */
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    /* font-family: 'Lato', sans-serif; */
+    font-family: 'Shrikhand', cursive;
+    font-size: 36px;
+    /* color: #818181; */
+    color: #1fc7ec;
+    display: block; /* Display block instead of inline */
+    transition: 0.3s; /* Transition effects on hover (color) */
+}
+  
+/* When you mouse over the navigation links, change their color */
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+  
+/* Position the close button (top right corner) */
+.overlay .closebtn {
+    font-family: 'Lato', sans-serif;
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 80px;
+}
+
+/* Non-Active button */
+.nonActiveButton {
+    padding: 8px;
+    text-decoration: none;
+    /* font-family: 'Lato', sans-serif; */
+    font-family: 'Shrikhand', cursive;
+    font-size: 36px;
+    /* color: #818181; */
+    color: #1fc7ec;
+    cursor: pointer;
+}
+
+/* Non-Active button hover*/
+.nonActiveButton:hover {
+    padding: 8px;
+    text-decoration: none;
+    /* font-family: 'Lato', sans-serif; */
+    font-family: 'Shrikhand', cursive;
+    font-size: 36px;
+    color: #f1f1f1;
+    cursor: pointer;
+}
+
+/* ---------------------------------------- */
+/* ---------------------------------------- */
+/* MEDIA QUERIES */
+
+/* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+@media screen and (max-height: 450px) {
+    .overlay {overflow-y: auto;}
+    .overlay a {font-size: 20px}
+    .overlay .closebtn {
+      font-size: 40px;
+      top: 15px;
+      right: 35px;
+    }
+}
+
+/* -------------------- */
+
+/* When Screen Size Max-Width is 1030px */
+/* (1024px is viewport width of iPad Pro in vertical) */
+/* (1366px is viewport height of iPad Pro in vertical) */
+@media screen and (max-width: 1030px) {
+
+
+
+}
+
+/* -------------------- */
+
+/* When Screen Size Max-Width is 980px */
+/* (768px is viewport width of iPad in vertical) */
+/* (1024px is viewport height of iPad in vertical) */
+@media screen and (max-width: 980px) {
+
+
+
+}
+
+/* -------------------- */
+
+/* When Screen Size Max-Width is 750px */
+/* (375px is viewport width of iPhone X in vertical) */
+@media screen and (max-width: 750px) {
+
+    .overlay .closebtn {
+        font-size: 70px;
+
+        left: 50%;
+        transform: translate(-30px, 0px);
+    }
+
+    .overlay a {
+        font-size: 35px;
+
+        transform: translate(-5px, 0px);
+    }
+
+    .overlay a:hover {
+        font-size: 35px;
+    }
+
+    .nonActiveButton {
+        font-size: 35px;
+
+        transform: translate(-5px, 0px);
+    }
+
+    .nonActiveButton:hover {
+        font-size: 35px;
+    }
+
+}
